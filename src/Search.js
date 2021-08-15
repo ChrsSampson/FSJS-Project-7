@@ -1,13 +1,9 @@
 import {Component} from 'react';
-import { Link, Redirect } from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 
 // This is a class because I dont want to deal with the ref hook
 class Search extends Component {
-  constructor(props){
-    super(props)
-  }
-    
+      
   
     handleSearch = (e) => {
       e.preventDefault();

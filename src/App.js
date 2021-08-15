@@ -1,5 +1,5 @@
 import './css/index.css';
-import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import {useEffect, useState} from 'react'
 import axios from 'axios';
 import {apiKey} from './config'
@@ -41,13 +41,7 @@ function App() {
         console.log(err)
       })
   }
-
-  // Load data ONCE and ONLY FUCKING ONCE at load time
-  useEffect(() => {
-    getData(getRecent)
-    loadPreset()
-  }, [])
- 
+  
   // Function to make call the URL parameter and SetPhotos to result
   function getData (url) {
     setLoading(true)
@@ -73,13 +67,19 @@ function App() {
       .catch(err => {
         console.log(err)
       })
-
   }
 
   // update keyword state when searching
   function changeKeyword (word) {
     setKeyword(word);
   }
+
+  // Load data ONCE and ONLY FUCKING ONCE at load time
+  useEffect(() => {
+    getData(getRecent)
+    loadPreset()
+  // eslint-disable-next-line 
+  }, [])
 
   return (
     <Router>
